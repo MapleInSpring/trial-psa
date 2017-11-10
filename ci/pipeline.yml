@@ -1,0 +1,23 @@
+resources:
+- name: psa-trial
+  type: git
+  source:
+    uri: https://git.nlpcf.psa/PSA-BPMS/trial.git
+    branch: master
+    skip_ssl_verification: true
+- name: deploy
+  type: cf
+  source:
+    api: https://api.run.pivotal.io
+    username: {{pcf_username}}
+    password: {{pcf_password}}
+    organization: PSA
+    space: BPMS
+    skip_cert_check: true
+
+jobs:
+- name: trial-round
+  plan:
+  - get: psa-trial
+    trigger: true
+  - put: deploy
