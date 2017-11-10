@@ -2,7 +2,7 @@ resources:
 - name: psa-trial
   type: git
   source:
-    uri: git@github.com:MapleInSpring/trial-psa.git
+    uri: https://github.com/MapleInSpring/trial-psa.git
     branch: master
     skip_ssl_verification: true
 - name: deploy
