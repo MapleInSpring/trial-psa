@@ -1,3 +1,9 @@
+resource_types:
+- name: artifactory
+  type: docker-image
+  source:
+    repository: pivotalservices/artifactory-resource
+
 resources:
 - name: trial-psa
   type: git
@@ -5,6 +11,15 @@ resources:
     uri: https://github.com/MapleInSpring/trial-psa.git
     branch: master
     skip_ssl_verification: true
+- name: artifactory-repository
+  type: artifactory
+  check_every: 1m
+  source:
+    endpoint: "http://192.168.99.1:8081/artifactory"
+    repository: "/trial-psa-jar-files"
+    regex: "trial-(?<version>.*)-SNAPSHOT.jar"
+    username: admin
+    password: password
 - name: deploy
   type: cf
   source:
@@ -18,11 +33,10 @@ resources:
 jobs:
 - name: trial-round
   plan:
-  - get: trial-psa
+  - get: artifactory-repository
     trigger: true
-  - task: build
-    file: trial-psa/ci/build.yml
+  - get: trial-psa
   - put: deploy
     params:
       manifest: trial-psa/manifest.yml
-      path: build-src/trial-psa-0.0.1-SNAPSHOT.jar
+      path: ./artifactory-repository/trial-0.0.2-SNAPSHOT.jar

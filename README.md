@@ -12,3 +12,7 @@ all the external dependencies we need in order to do a proper deploy
 ### Steps before VPN gets approved
 * Sync from dropbox
 * Update git remote to gogs remote
+
+### Useful references
+* [Artifactory with concourse](https://github.com/pivotalservices/concourse-pipeline-samples/tree/master/artifactory-integration)
+* [Concourse with maven cf](https://github.com/patrickcrocker/concourse-maven-cf-simple/blob/master/pipeline.yml)
