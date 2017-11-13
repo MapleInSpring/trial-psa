@@ -10,7 +10,7 @@ inputs:
 - name: trial-psa
 
 outputs:
-- name: build
+- name: build-src
 
 run:
   path: trial-psa/ci/build.sh
