@@ -1,0 +1,13 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: java
+    tag: "8"
+
+inputs:
+- name: trial-psa
+
+run:
+  path: trial-psa/ci/build.sh

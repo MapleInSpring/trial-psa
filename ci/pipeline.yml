@@ -1,5 +1,5 @@
 resources:
-- name: psa-trial
+- name: trial-psa
   type: git
   source:
     uri: https://github.com/MapleInSpring/trial-psa.git
@@ -18,6 +18,10 @@ resources:
 jobs:
 - name: trial-round
   plan:
-  - get: psa-trial
+  - get: trial-psa
     trigger: true
+  - task: build
+    file: trial-psa/ci/build.yml
   - put: deploy
+    params:
+      manifest: trial-psa/manifest.yml
