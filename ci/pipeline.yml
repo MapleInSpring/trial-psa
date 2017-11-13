@@ -25,4 +25,4 @@ jobs:
   - put: deploy
     params:
       manifest: trial-psa/manifest.yml
-      path: build-src/trial-0.0.1-SNAPSHOT.jar
+      path: build-src/trial-psa-0.0.1-SNAPSHOT.jar
