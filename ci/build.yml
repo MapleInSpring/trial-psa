@@ -9,5 +9,8 @@ image_resource:
 inputs:
 - name: trial-psa
 
+outputs:
+- name: build
+
 run:
   path: trial-psa/ci/build.sh
