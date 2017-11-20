@@ -15,7 +15,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
 group = 'psa'
-version = '0.0.1-SNAPSHOT'
+version = System.getenv("BUILD_VERSION")
 sourceCompatibility = 1.8
 
 repositories {
