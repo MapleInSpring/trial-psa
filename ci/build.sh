@@ -6,7 +6,7 @@ cd trial-psa/
 
 export BUILD_VERSION=0.0.3-SNAPSHOT
 
-./gradlew build
+./gradlew bootRepackage
 
 cp build/libs/*.jar ../build-src/.
 
