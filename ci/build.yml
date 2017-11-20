@@ -7,11 +7,15 @@ image_resource:
     tag: "8"
 
 inputs:
-- name: trial-psa
-- name: resource-version
+  - name: trial-psa
+  - name: resource-version
 
 outputs:
-- name: build-src
+  - name: build-src
+
+caches:
+  - path: .gradle/
+  - path: .m2/
 
 run:
   path: trial-psa/ci/build.sh
