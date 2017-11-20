@@ -4,7 +4,9 @@ set -e -u -x
 
 cd trial-psa/
 
-export BUILD_VERSION=0.0.3-SNAPSHOT
+cat resource-version/number
+
+export BUILD_VERSION=$(cat resource-version/number)
 
 ./gradlew bootRepackage
 

@@ -8,6 +8,7 @@ image_resource:
 
 inputs:
 - name: trial-psa
+- name: resource-version
 
 outputs:
 - name: build-src
