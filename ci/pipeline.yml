@@ -11,11 +11,22 @@ resources:
     uri: https://github.com/MapleInSpring/trial-psa.git
     branch: master
     skip_ssl_verification: true
+- name: resource-version
+  type: semver
+  source:
+    driver: git
+    initial_version: 0.0.1
+    uri: https://github.com/MapleInSpring/trial-psa.git
+    branch: version
+    file: version
 
 jobs:
 - name: trial-round
   plan:
   - get: trial-psa
     trigger: true
+  - get: resource-version
+  - task: display-version
+    file: trial-psa/ci/display-version.yml
   - task: build
     file: trial-psa/ci/build.yml
