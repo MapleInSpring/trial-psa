@@ -11,32 +11,11 @@ resources:
     uri: https://github.com/MapleInSpring/trial-psa.git
     branch: master
     skip_ssl_verification: true
-- name: artifactory-repository
-  type: artifactory
-  check_every: 1m
-  source:
-    endpoint: "http://192.168.99.1:8081/artifactory"
-    repository: "/trial-psa-jar-files"
-    regex: "trial-(?<version>.*)-SNAPSHOT.jar"
-    username: admin
-    password: password
-- name: deploy
-  type: cf
-  source:
-    api: https://api.run.pivotal.io
-    username: {{pcf_username}}
-    password: {{pcf_password}}
-    organization: PSA
-    space: BPMS
-    skip_cert_check: true
 
 jobs:
 - name: trial-round
   plan:
-  - get: artifactory-repository
-    trigger: true
   - get: trial-psa
-  - put: deploy
-    params:
-      manifest: trial-psa/manifest.yml
-      path: ./artifactory-repository/trial-0.0.2-SNAPSHOT.jar
+    trigger: true
+  - task: build
+    file: trial-psa/ci/build.yml
