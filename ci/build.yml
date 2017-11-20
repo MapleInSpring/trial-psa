@@ -13,9 +13,5 @@ inputs:
 outputs:
   - name: build-src
 
-caches:
-  - path: .gradle/
-  - path: .m2/
-
 run:
   path: trial-psa/ci/build.sh
